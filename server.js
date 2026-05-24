@@ -185,7 +185,7 @@ function calcRSI(prices, period = 14) {
   return 100 - (100 / (1 + avgGain / avgLoss));
 }
 
-// Autonomous scan — every 5 minutes
+// Autonomous scan — every 2 hours
 async function scan() {
   scanCount++;
   addLog('S1', `Scan #${scanCount} initiated`);
@@ -209,7 +209,7 @@ async function scan() {
       await fetch(`http://localhost:${PORT}/signal/gold`);
       setTimeout(async () => {
         await fetch(`http://localhost:${PORT}/signal/forex`);
-        addLog('S10', `Scan #${scanCount} complete. Next in 5 min.`);
+        addLog('S10', `Scan #${scanCount} complete. Next in 2 hrs.`);
       }, 15000);
     }, 15000);
 
